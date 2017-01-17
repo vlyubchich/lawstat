@@ -1,16 +1,15 @@
 Package: lawstat
 Type: Package
 Title: Tools for Biostatistics, Public Policy, and Law
-Version: 3.0
-Date: 2015-07-07
-Author: (in alphabetical order) 
-        Joseph L. Gastwirth <jlgast@gwu.edu>;                
-        Yulia R. Gel <ygl@utdallas.edu>;                
-        W. L. Wallace Hui <wlwhui@uwaterloo.ca>;  
-        Vyacheslav Lyubchich <lyubchic@cbl.umces.edu>;
-        Weiwen Miao <miao@macalester.edu>;                 
-        Kimihiro Noguchi <kinoguchi@ucdavis.edu>                  
-Maintainer: Vyacheslav Lyubchich <lyubchic@cbl.umces.edu>
+Version: 3.1
+Date: 2017-01-17
+Authors@R: c(person("Joseph L.", "Gastwirth", role = "aut"),
+             person("Yulia R.", "Gel", role = "aut"),
+             person("W. L. Wallace", "Hui", role = "aut"),
+             person("Vyacheslav", "Lyubchich", role = c("aut", "cre"),
+                    email="lyubchic@umces.edu"),
+             person("Weiwen", "Miao", role = "aut"),
+             person("Kimihiro", "Noguchi", role = "aut"))
 Depends: R (>= 2.6.0), Hmisc, Kendall, mvtnorm, VGAM
 Suggests: fBasics
 License: GPL (>= 2)
