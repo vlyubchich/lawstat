@@ -1,8 +1,8 @@
 Package: lawstat
 Type: Package
 Title: Tools for Biostatistics, Public Policy, and Law
-Version: 3.1
-Date: 2017-01-17
+Version: 3.2
+Date: 2017-11-22
 Authors@R: c(person("Joseph L.", "Gastwirth", role = "aut"),
              person("Yulia R.", "Gel", role = "aut"),
              person("W. L. Wallace", "Hui", role = "aut"),
@@ -10,7 +10,7 @@ Authors@R: c(person("Joseph L.", "Gastwirth", role = "aut"),
                     email="lyubchic@umces.edu"),
              person("Weiwen", "Miao", role = "aut"),
              person("Kimihiro", "Noguchi", role = "aut"))
-Depends: R (>= 2.6.0), Hmisc, Kendall, mvtnorm, VGAM
+Depends: R (>= 2.6.0), Kendall, mvtnorm, VGAM
 Suggests: fBasics
 License: GPL (>= 2)
 Description: Statistical tests widely utilized in biostatistics, public policy, and law. Along with the well-known tests for equality of means and variances, randomness, 
