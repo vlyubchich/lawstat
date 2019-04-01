@@ -86,7 +86,7 @@
         
         ### stop the code if the location "trim.mean" is selected and trim.alpha is too large ###
         
-        if ((location == "trim.mean") & (trim.alpha == 1))
+        if ((location == "trim.mean") & (trim.alpha > 0.5))
         {
             stop("trim.alpha value of 0 to 0.5 should be provided for the trim.mean location")
         }
@@ -114,20 +114,14 @@
             means <- tapply(y, group, median)
             METHOD <-
                 "ltrend test based on the modified Brown-Forsythe Levene-type procedure using the group medians"
-        }
-        
-        else
-        {
+        } else {
             location <- "trim.mean"
-            trimmed.mean <- function(y)
-                mean(y, trim = trim.alpha)
-            means <- tapply(y, group, trimmed.mean)
+            means <- tapply(y, group, mean, trim = trim.alpha)
             METHOD <-
                 "ltrend test based on the modified Brown-Forsythe Levene-type procedure using the group trimmed means"
         }
         
         ### calculate the sample size of each group and absolute deviation from center ###
-        
         n <- tapply(y, group, length)
         ngroup <- n[group]
         resp.mean <- abs(y - means[group])
@@ -570,28 +564,16 @@
                 
                 ### step 6 of Lim and Loh (1996): compute the bootstrap statistic, and increment R to R + 1 if necessary ###
                 
-                if (location == "mean")
-                {
+                if (location == "mean") {
                     boot.means <- tapply(boot.sample, group, mean)
-                }
-                
-                else if (location == "median")
-                {
+                } else if (location == "median") {
                     boot.means <- tapply(boot.sample, group, median)
-                }
-                
-                else
-                {
+                } else {
                     location <- "trim.mean"
-                    
-                    trimmed.mean.2 <-
-                        function(boot.sample)
-                            mean(boot.sample, trim = trim.alpha)
-                    boot.means <- tapply(boot.sample, group, trimmed.mean.2)
+                    boot.means <- tapply(boot.sample, group, mean, trim = trim.alpha)
                 }
                 
                 ### calculate bootstrap statistic ###
-                
                 resp.boot.mean <- abs(boot.sample - boot.means[group])
                 
                 if (correction.method == "correction.factor")

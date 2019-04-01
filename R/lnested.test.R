@@ -121,32 +121,22 @@
     
     ### define the measure of central tendency (mean, median, trimmed mean) ###
     
-    if (location == "mean")
-    {
+    if (location == "mean") {
         means <- tapply(y, group, mean)
         METHOD <-
             "lnested test based on classical Levene's procedure using the group means"
-    }
-    
-    else if (location == "median")
-    {
+    } else if (location == "median") {
         means <- tapply(y, group, median)
         METHOD <-
             "lnested test based on the modified Brown-Forsythe Levene-type procedure using the group medians"
-    }
-    
-    else
-    {
+    } else {
         location = "trim.mean"
-        trimmed.mean <- function(y)
-            mean(y, trim = trim.alpha)
-        means <- tapply(y, group, trimmed.mean)
+        means <- tapply(y, group, mean, trim = trim.alpha)
         METHOD <-
             "ltrend test based on the modified Brown-Forsythe Levene-type procedure using the group trimmed means"
     }
     
     ### calculate the sample size of each group and deviation from center ###
-    
     z <- y - means[group]
     n <- tapply(z, group, length)
     ngroup <- n[group]
@@ -609,29 +599,16 @@
                 
                 ### step 6 of Lim and Loh (1996): compute the bootstrap statistic, and increment R to R + 1 if necessary ###
                 
-                if (location == "mean")
-                {
+                if (location == "mean") {
                     boot.means <- tapply(boot.sample, group.trim, mean)
-                }
-                
-                else if (location == "median")
-                {
+                } else if (location == "median") {
                     boot.means <- tapply(boot.sample, group.trim, median)
-                }
-                
-                else
-                {
+                } else {
                     location <- "trim.mean"
-                    
-                    trimmed.mean.2 <-
-                        function(boot.sample)
-                            mean(boot.sample, trim = trim.alpha)
-                    boot.means <-
-                        tapply(boot.sample, group.trim, trimmed.mean.2)
+                    boot.means <- tapply(boot.sample, group.trim, mean, trim = trim.alpha)
                 }
                 
                 ### calculate bootstrap statistic ###
-                
                 z <- boot.sample - boot.means[group.trim]
                 
                 ### multiply the correction factor to each observation if "correction.factor" is chosen ###
@@ -744,10 +721,7 @@
                     n1.trim <- n.trim[1:i] - 1
                     j <- i + 1
                     n2.trim <- n.trim[j] - 1
-                }
-                
-                else
-                {
+                } else {
                     n1.trim <- n.trim[1:i]
                     j <- i + 1
                     n2.trim <- n.trim[j]

@@ -71,7 +71,7 @@
         
         ### stop the code if the location "trim.mean" is selected and trim.alpha is too large ###
         
-        if ((location == "trim.mean") & (trim.alpha == 1))
+        if ((location == "trim.mean") & (trim.alpha > 0.5))
         {
             stop("trim.alpha value of 0 to 0.5 should be provided for the trim.mean location")
         }
@@ -102,9 +102,7 @@
         else
         {
             location = "trim.mean"
-            trimmed.mean <- function(y)
-                mean(y, trim = trim.alpha)
-            means <- tapply(y, group, trimmed.mean)
+            means <- tapply(y, group, mean, trim = trim.alpha)
             METHOD = "double contrast test based on the absolute deviations from the trimmed mean"
         }
         
@@ -423,11 +421,7 @@
                 else
                 {
                     location = "trim.mean"
-                    
-                    trimmed.mean.2 <-
-                        function(boot.sample)
-                            mean(boot.sample, trim = trim.alpha)
-                    boot.means <- tapply(boot.sample, group, trimmed.mean.2)
+                    boot.means <- tapply(boot.sample, group, mean, trim = trim.alpha)
                 }
                 
                 ### calculate bootstrap statistic ###
