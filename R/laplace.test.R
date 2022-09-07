@@ -27,8 +27,6 @@
 #' @references
 #' \insertAllCited{}
 #' 
-#' @seealso \code{\link[VGAM]{plaplace}}
-#' 
 #' @keywords distribution
 #' 
 #' @author Kimihiro Noguchi, Yulia R. Gel
