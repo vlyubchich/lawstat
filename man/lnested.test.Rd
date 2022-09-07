@@ -4,12 +4,17 @@
 \alias{lnested.test}
 \title{Test for a Monotonic Trend in Variances}
 \usage{
-lnested.test(y, group, location = c("median", "mean", "trim.mean"),
-  tail = c("right", "left", "both"), trim.alpha = 0.25,
-  bootstrap = FALSE, num.bootstrap = 1000,
-  correction.method = c("none", "correction.factor", "zero.removal",
-  "zero.correction"), correlation.method = c("pearson", "kendall",
-  "spearman"))
+lnested.test(
+  y,
+  group,
+  location = c("median", "mean", "trim.mean"),
+  tail = c("right", "left", "both"),
+  trim.alpha = 0.25,
+  bootstrap = FALSE,
+  num.bootstrap = 1000,
+  correction.method = c("none", "correction.factor", "zero.removal", "zero.correction"),
+  correlation.method = c("pearson", "kendall", "spearman")
+)
 }
 \arguments{
 \item{y}{a numeric vector of data values.}

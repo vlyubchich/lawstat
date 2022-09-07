@@ -4,8 +4,12 @@
 \alias{brunner.munzel.test}
 \title{Brunner--Munzel Test for Stochastic Equality}
 \usage{
-brunner.munzel.test(x, y, alternative = c("two.sided", "greater",
-  "less"), alpha = 0.05)
+brunner.munzel.test(
+  x,
+  y,
+  alternative = c("two.sided", "greater", "less"),
+  alpha = 0.05
+)
 }
 \arguments{
 \item{x}{the numeric vector of data values from the sample 1.}
